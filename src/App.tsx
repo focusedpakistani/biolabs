@@ -1,4 +1,4 @@
-import { useEffect, lazy, Suspense } from 'react'
+import { useEffect, lazy, Suspense, type ReactElement } from 'react'
 import { useAppStore } from './store/appStore'
 import Sidebar from './components/layout/Sidebar'
 import Header from './components/layout/Header'
@@ -45,7 +45,7 @@ const Settings       = lazy(() => import('./views/settings/Settings'))
 
 function ViewRenderer() {
   const { currentModule } = useAppStore()
-  const views: Record<string, JSX.Element> = {
+  const views: Record<string, ReactElement> = {
     dashboard:    <Dashboard />,
     protein3d:    <Protein3D />,
     dna3d:        <DNA3D />,
