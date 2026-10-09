@@ -93,11 +93,12 @@ function MolCanvas({ smiles, label }: { smiles: string; label: string }) {
         ctx.globalAlpha = 0.7
         ctx.stroke()
         ctx.globalAlpha = 1
-      })
+      });
 
       // Atoms (depth sorted)
-      [...projected].sort((a,b) => a.z - b.z).forEach((p, si) => {
-        const at = atoms[projected.indexOf(p) === -1 ? si : projected.indexOf(p)]
+      const sortedProjected = [...projected].sort((a, b) => a.z - b.z);
+      sortedProjected.forEach((p, si) => {
+        const at = atoms[projected.indexOf(p) === -1 ? si : projected.indexOf(p)];
         const col = ATOM_COLORS[at?.symbol] ?? '#aaa'
         const r = (ATOM_SIZES[at?.symbol] ?? 12) * p.scale
         const grd = ctx.createRadialGradient(p.x - r*0.3, p.y - r*0.3, r*0.1, p.x, p.y, r)
