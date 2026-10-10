@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import { useAppStore } from '../../store/appStore'
-import { Play, Pause, RotateCcw, Info } from 'lucide-react'
+import { Play, Pause, RotateCcw } from 'lucide-react'
 
 // 3D DNA Double Helix rendered on Canvas
 // Uses parametric equations for the helix + base pairs
@@ -17,11 +17,9 @@ function generateSequence(len = 40) {
 export default function DNA3D() {
   const { level } = useAppStore()
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animRef = useRef<number>(0)
   const angleRef = useRef(0)
   const [playing, setPlaying] = useState(true)
   const [sequence, setSequence] = useState(SEQUENCE)
-  const [hoveredBase, setHoveredBase] = useState<string | null>(null)
   const [mode, setMode] = useState<'dna' | 'rna'>('dna')
   const [zoom, setZoom] = useState(1)
   const [mutate, setMutate] = useState(false)
@@ -38,8 +36,9 @@ export default function DNA3D() {
   }, [mutate, sequence])
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const canvasRefValue = canvasRef.current
+    if (!canvasRefValue) return
+    const canvas: HTMLCanvasElement = canvasRefValue
     let raf: number
     const ctx = canvas.getContext('2d')!
 

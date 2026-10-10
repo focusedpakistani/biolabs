@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import { useAppStore } from '../../store/appStore'
-import { Play, Pause, RotateCcw, ZoomIn, Download } from 'lucide-react'
+import { Play, Pause, RotateCcw, ZoomIn } from 'lucide-react'
 
 // Protein 3D viewer using canvas-based sphere rendering
 // Simulates a real folded protein structure
@@ -58,7 +58,6 @@ const PROTEINS = [
 export default function Protein3D() {
   const { level } = useAppStore()
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animRef   = useRef<number>(0)
   const angleRef  = useRef({ x: 0.3, y: 0 })
   const [playing, setPlaying] = useState(true)
   const [selectedProtein, setSelectedProtein] = useState(PROTEINS[0])
@@ -72,8 +71,9 @@ export default function Protein3D() {
   }, [selectedProtein])
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const canvasRefValue = canvasRef.current
+    if (!canvasRefValue) return
+    const canvas: HTMLCanvasElement = canvasRefValue
     const ctx = canvas.getContext('2d')!
     let raf: number
 
@@ -125,7 +125,7 @@ export default function Protein3D() {
       const projected = residues.map((r, i) => ({ ...project(r.x, r.y, r.z), r, i }))
       projected.sort((a, b) => a.z - b.z)
 
-      projected.forEach(({ px, py, z: pz, sf, r }) => {
+      projected.forEach(({ px, py, sf, r }) => {
         const col = colorMode === 'structure' ? (AA_COLORS[r.type] ?? '#888') : (r.name.match(/LEU|ILE|VAL|PHE|TRP|MET|ALA/) ? AA_COLORS.hydrophobic : r.name.match(/LYS|ARG|ASP|GLU|HIS/) ? AA_COLORS.charged : AA_COLORS.polar)
         const radius = Math.max(3, 7 * sf * zoom)
         const grd = ctx.createRadialGradient(px - radius*0.3, py - radius*0.3, radius*0.1, px, py, radius)

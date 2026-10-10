@@ -1,16 +1,16 @@
 import { useAppStore, type Module } from '../../store/appStore'
 import {
-  LayoutDashboard, Dna, FlaskConical, Atom, Heart, Microscope, Brain,
-  Scissors, GitBranch, Beaker, Zap, Pill, Stethoscope, Search, BookOpen,
+  LayoutDashboard, Dna, FlaskConical, Atom, Microscope, Brain,
+  Scissors, Beaker, Zap, Pill, Stethoscope, Search, BookOpen,
   HelpCircle, Layers, Clock, Calculator, Settings, Bug, Database,
-  TrendingUp, Network, Shield, Waves, Cpu, Radiation, Eye, Activity,
+  Network, Shield, Waves, Cpu, Radiation, Eye, Activity,
   ChevronRight, TestTube2, Syringe
 } from 'lucide-react'
 
 interface NavSection {
   title: string
-  icon: React.ComponentType<{ size?: number }>
-  items: { label: string; view: Module; icon: React.ComponentType<{ size?: number }>; badge?: string; color?: string }[]
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number }>
+  items: { label: string; view: Module; icon: React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number }>; badge?: string; color?: string }[]
 }
 
 const NAV: NavSection[] = [

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useAppStore } from '../../store/appStore'
-import { Sparkles, X, Send, Settings, Trash2, ChevronDown } from 'lucide-react'
+import { Sparkles, Send, Settings, Trash2, ChevronDown } from 'lucide-react'
 
 interface Message { role: 'user' | 'assistant' | 'system'; content: string }
 

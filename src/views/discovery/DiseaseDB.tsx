@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, Bug, TrendingUp, ChevronRight, BookOpen, Zap, AlertTriangle } from 'lucide-react'
+import { Search, Bug, TrendingUp, ChevronRight, Zap, AlertTriangle } from 'lucide-react'
 import { useAppStore } from '../../store/appStore'
 
 interface Disease {

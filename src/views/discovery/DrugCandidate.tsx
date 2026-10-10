@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, TestTube2, Zap, TrendingUp, ChevronRight, Pill, Target } from 'lucide-react'
+import { Search, TestTube2, Zap, Pill, Target } from 'lucide-react'
 
 interface Drug {
   id: string; name: string; target: string; disease: string; stage: string

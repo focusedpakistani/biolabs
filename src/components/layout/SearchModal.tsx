@@ -6,7 +6,7 @@ interface SearchResult {
   label: string
   view: Module
   description: string
-  icon: React.ComponentType<{ size?: number }>
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number }>
   category: string
 }
 

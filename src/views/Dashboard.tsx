@@ -3,14 +3,14 @@ import {
   Dna, FlaskConical, Atom, Stethoscope, Bug, BookOpen, Cpu, Brain,
   Scissors, Network, Shield, Beaker, Zap, Waves, Radiation, Eye, Pill,
   Syringe, TestTube2, Database, Clock, Calculator, HelpCircle,
-  Layers, ArrowRight, Play, Sparkles, TrendingUp, Star
+  Layers, ArrowRight, Play, Sparkles, Star
 } from 'lucide-react'
 
 interface FeatureCard {
   title: string
   desc: string
   view: Module
-  icon: React.ComponentType<{ size?: number }>
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number }>
   color: string
   badge?: string
   hot?: boolean
@@ -31,7 +31,7 @@ const FEATURED: FeatureCard[] = [
   { title: 'Immunology', desc: 'Immune cells, antibodies, defense pathways', view: 'immunology', icon: Shield, color: '#a855f7', badge: 'NEW' },
 ]
 
-const QUICK_ACCESS: { label: string; view: Module; icon: React.ComponentType<{ size?: number }> }[] = [
+const QUICK_ACCESS: { label: string; view: Module; icon: React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number }> }[] = [
   { label: 'Neuroscience',    view: 'neuroscience',  icon: Brain },
   { label: 'Quantum Chem',   view: 'quantum',       icon: Zap },
   { label: 'Mechanics',      view: 'mechanics',     icon: Waves },
